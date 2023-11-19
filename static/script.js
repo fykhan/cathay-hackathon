@@ -1,10 +1,12 @@
 
-
+//variables for chat-input textarea, sendChatBtn and chatBox
 const chatInput = document.querySelector('.chat-input textarea');
 const sendChatBtn = document.querySelector('.chat-input span');
 const chatBox = document.querySelector('.chat-box');
 
+//variable for user input
 let userMessage;
+
 
 const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
@@ -14,6 +16,7 @@ const createChatLi = (message, className) => {
     return chatLi;
 }
 
+//Function to generate the chatBot response by accessing the API
 const generateResponse = () => {
     const API_URL = "/get_response";
     const incomingChatLi = createChatLi("Thinking...", "chat-incoming");
@@ -29,11 +32,7 @@ const generateResponse = () => {
         },
         body: JSON.stringify({ user_input }),
     };
-    /*if (chatInput.value.includes("gate-5")){
-        chatBox.removeChild(incomingChatLi);
-        chatBox.appendChild(createChatLi("Directing you to gate-5", "chat-incoming"));
-    }
-    else {*/
+
     fetch(API_URL, requestOptions)
         .then(response => response.json())
         .then(data => {
@@ -52,6 +51,7 @@ const generateResponse = () => {
         chatInput.value = ''
 };
 
+//Function to handle chat
 const handleChat = () => {
     userMessage = chatInput.value;
     if (!userMessage) return;
@@ -63,6 +63,7 @@ const handleChat = () => {
     setTimeout(generateResponse, 600);
 };
 
+//EventListeners for clicking send and pressing enter
 sendChatBtn.addEventListener("click", handleChat);
 
 chatInput.addEventListener("keydown", event => {
