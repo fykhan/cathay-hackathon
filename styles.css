@@ -55,7 +55,7 @@ body {
     margin: 0 10px 7px 0;
 }
 
-
+<-----Style for message response----->
 .chat-box .chat-outgoing {
     margin: 20px 0;
     display: flex;
@@ -71,6 +71,7 @@ body {
     font-size: 0.95rem;
 }
 
+<-------Style for user input------>
 .chat-box .chat-incoming p {
     color: #000;
     background: #f2f2f2;
@@ -113,6 +114,7 @@ body {
     visibility: visible;
 }
 
+<-------------Responsive------------>
 @media (max-width: 490px) {
     .chat-bot {
         right: 0;
