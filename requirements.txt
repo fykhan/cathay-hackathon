@@ -1,0 +1,5 @@
+pypdf==3.9.0
+azure-identity==1.13.0
+openai[datalib]==0.28
+flask>=2.2.2
+python-dotenv
