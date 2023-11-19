@@ -113,6 +113,7 @@ body {
     visibility: visible;
 }
 
+<----------Responsive-------->
 @media (max-width: 490px) {
     .chat-bot {
         right: 0;
