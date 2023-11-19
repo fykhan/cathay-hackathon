@@ -48,21 +48,32 @@ const generateResponse = () => {
         }, 1500);
 
     }
-    fetch(API_URL, requestOptions)
-        .then(response => response.json())
-        .then(data => {
-            const responseMessage = data.response;
-            chatBox.removeChild(incomingChatLi);
-            chatBox.appendChild(createChatLi(responseMessage, "chat-incoming"));
-            chatBox.scrollTo(0, chatBox.scrollHeight);
-            
-            
-            // Print the response message
-            console.log(responseMessage);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        }); 
+
+    else if (chatInput.value.includes("lounge") || chatInput.value.includes("hotel")) {
+        chatBox.removeChild(incomingChatLi);
+        chatBox.appendChild(createChatLi("Redirecting you to the Lounge", "chat-incoming"));
+        setTimeout(function() {
+            window.open("https://cathayhackathon.s3.amazonaws.com/export/3/MyProject-HTML5-Shipping.html");
+        }, 1500);
+
+    }
+
+    else{
+        fetch(API_URL, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                const responseMessage = data.response;
+                chatBox.removeChild(incomingChatLi);
+                chatBox.appendChild(createChatLi(responseMessage, "chat-incoming"));
+                chatBox.scrollTo(0, chatBox.scrollHeight);
+                
+                
+                // Print the response message
+                console.log(responseMessage);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            }); }
         chatInput.value = ''
 };
 
