@@ -33,6 +33,21 @@ const generateResponse = () => {
         body: JSON.stringify({ user_input }),
     };
 
+    if (chatInput.value.includes("gate-5") || chatInput.value.includes("gate 5")) {
+        chatBox.removeChild(incomingChatLi);
+        chatBox.appendChild(createChatLi("Redirecting you to Boarding Gate 5", "chat-incoming"));
+        setTimeout(function() {
+            window.open("https://cathayhackathon.s3.amazonaws.com/export/1/MyProject-HTML5-Shipping.html");
+        }, 1500);
+    }
+    else if (chatInput.value.includes("booth-35") || chatInput.value.includes("booth 35")) {
+        chatBox.removeChild(incomingChatLi);
+        chatBox.appendChild(createChatLi("Redirecting you to Check-in Booth 35", "chat-incoming"));
+        setTimeout(function() {
+            window.open("https://cathayhackathon.s3.amazonaws.com/export/2/MyProject-HTML5-Shipping.html");
+        }, 1500);
+
+    }
     fetch(API_URL, requestOptions)
         .then(response => response.json())
         .then(data => {
