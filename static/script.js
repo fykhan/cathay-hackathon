@@ -20,7 +20,7 @@ const generateResponse = () => {
     chatBox.appendChild(incomingChatLi);
     chatBox.scrollTo(0, chatBox.scrollHeight);
 
-    const user_input = userMessage;
+    const user_input = chatInput.value.trim();
 
     const requestOptions = {
         method: "POST",
@@ -29,7 +29,11 @@ const generateResponse = () => {
         },
         body: JSON.stringify({ user_input }),
     };
-
+    /*if (chatInput.value.includes("gate-5")){
+        chatBox.removeChild(incomingChatLi);
+        chatBox.appendChild(createChatLi("Directing you to gate-5", "chat-incoming"));
+    }
+    else {*/
     fetch(API_URL, requestOptions)
         .then(response => response.json())
         .then(data => {
@@ -37,20 +41,24 @@ const generateResponse = () => {
             chatBox.removeChild(incomingChatLi);
             chatBox.appendChild(createChatLi(responseMessage, "chat-incoming"));
             chatBox.scrollTo(0, chatBox.scrollHeight);
+            
+            
+            // Print the response message
+            console.log(responseMessage);
         })
         .catch(error => {
             console.error('Error:', error);
-        });
+        }); 
+        chatInput.value = ''
 };
 
-
 const handleChat = () => {
-    userMessage = chatInput.value.trim();
+    userMessage = chatInput.value;
     if (!userMessage) return;
 
     chatBox.appendChild(createChatLi(userMessage, "chat-outgoing"));
     chatBox.scrollTo(0, chatBox.scrollHeight);
-    chatInput.value = '';
+    //chatInput.value = '';
 
     setTimeout(generateResponse, 600);
 };

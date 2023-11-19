@@ -18,7 +18,7 @@ def get_response():
 
 def process_input(user_input):
 
-    return api.response(user_input)
+    return api.getResponse(user_input)
 
 if __name__ == '__main__':
     app.run(debug=True)

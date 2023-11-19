@@ -1,8 +1,5 @@
 import os
 import openai
-from dotenv import load_dotenv, dotenv_values
-
-print(dotenv_values('.env'))
 
 def getResponse(query):
     openai.api_type = "azure"
@@ -24,6 +21,5 @@ def getResponse(query):
     chat_content = chat_completion.choices[0].message.content
     return chat_content
 
-
 if __name__ == '__main__':
-    getResponse(input())
+    print(getResponse(input()))
